@@ -18,38 +18,114 @@ CSS 指的是 **Cascading Style Sheets** 即层叠样式表，我们在 **HTML5*
 <style rel="stylesheet" href="/static/css/bootstrap.min.css">
 ```
 
+### 选择器
+
+这里面我先介绍几种简单的选择器：
+
+#### 类选择器
+
+``` html
+<p class="lfkdsk">九章算法致力于让顶尖的工程师在线传授最优质的计算机课程，帮助更多中国人找到好工作</p>
+```
+
+我们为这个文本段添加类选择器：
+
+``` css
+.lfkdsk {
+	background-color:yellow;
+}
+```
+
+类选择器的语法就如上文所示，我们能通过这个选择出所有 *class* 属性是 **lfkdsk** 的标签，并将它们的背景变成黄色。
+
+![header](chapter_2_zero_to_web_css/class-selector.png)
 
 
+#### ID 选择器
 
+``` html
+<p id="lfkdsk">九章算法致力于让顶尖的工程师在线传授最优质的计算机课程，</p>
+<p>帮助更多中国人找到好工作</p>
+```
 
-### 类选择器
+比如我们有很多并列的标签，但是我们不想要设置 `class` 的 ID，只想要选中某个 id 的指定的标签，我们可以这么添加代码：
 
+``` css
+#lfkdsk { 
+	background-color:yellow;
+}
+```
 
+我们仅仅把对应 ID 的标签的背景颜色设为了黄色了。
 
-### ID 选择器
+![header](chapter_2_zero_to_web_css/id-selector.png)
 
+#### 标签选择器
 
+我们当然还有另一种选择，我们可以批量的选取某一种类的标签，让所有的这种标签都能应用上类似的属性：
 
-### 标签选择器
+``` html
+<p>九章算法致力于让顶尖的工程师在线传授最优质的计算机课程，</p>
+<p>帮助更多中国人找到好工作</p>
+```
 
+还是这个例子但是如果我们需要他们都被设置成黄色：
 
+``` css
+p { 
+	background-color:yellow;
+}
+```
 
+除此之外标签选择器还有很多类似的语法：
 
+* 组合：
 
-## 简单的 JavaScript 知识
+``` css
+p,div {
+  
+}
+<!-- 这样能选择所有的 P 和 Div 块 -->
+```
 
+* 所有子元素：
 
+``` css
+div p {
+  <!-- 这样能选择 DIV 元素中所有的 P 元素-->
+}
+```
 
-## 设计我们的 Todo-List
+* 所有某种父元素的某种子元素：
 
+``` css
+div > p {
+    <!-- 选择父元素为 <div> 元素的所有 <p> 元素 -->
+}
+```
 
+* 并列元素：
 
+``` css
+div + p {
+    <!-- 选择紧接在 <div> 元素之后的所有 <p> 元素 -->
+}
+```
 
+> 拓展阅读：CSS 选择器
+>
+> 我们这里面只介绍了三种比较基础的 CSS 选择器，我实际开发中使用到的 Selector 会比这个多，
+>
+> 读者应该阅读 [CSS选择器](http://www.w3school.com.cn/cssref/css_selectors.ASP) 获取更多的知识。
 
-## 一个人的全栈
+#### 练习：选择器
 
+切换分支到 `chapter-one-zero-to-web-practice` 中，使用 `src/css/selector.css` 中设置不同的选择器，让 HTML 中的所有元素都加上高量（可以试着使用很多种方式实现这个过程）。
 
+### 盒模型
 
+**CSS** 中还有另一个比较重要的东西控制了 HTML 中位置和样式的 盒模型，如下图所示：
 
+![box](chapter_2_zero_to_web_css/box-model.gif)
 
-##  
+盒模型
