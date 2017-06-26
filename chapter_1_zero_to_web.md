@@ -99,7 +99,21 @@ git checkout "chapter-one-zero-to-web-practice"
 >
 > 无论是 **W3C** 还是 **Mozilla** 都是很好的 Web 程序开发文档，但是因为本身就像是字典一样的东西，所以不建议逐个的那么学习，而是遇到什么不会的知识有针对性的去查询和学习。
 
-在对 HTML 进行分析之后我们还是延续之前的讲授思路，
+在对 HTML 进行分析之后我们还是延续之前的讲授思路，只想在之后我们需要使用的东西，更多的知识有 **W3C** 那样的字典网站可以方便的查询和了解。
+
+* head 头结点：
+
+``` html
+<head>
+    <title>Title</title>
+</head>
+```
+
+我们在头结点里面插入一个 title 标签，这个就能显示在浏览器的每个标签页中的标题上。
+
+![header](chapter_1_zero_to_web/header-learn.png)
+
+（如图，九章算法首页的标题和 title 标签的实现）
 
 ## 简单的 CSS 知识
 
