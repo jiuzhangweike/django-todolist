@@ -1,39 +1,6 @@
 # 从零开始的 Web 开发教程
 
-我们这门微课就从这里开始了，我们把这门微课的名字取名为 `从零开始的 Web 开发教程`，旨在为没有接触过 Web 开发的同学们提供一个了解相关技术栈、进行开发实践和学习更多相关知识的机会。本系列计划提供大概三篇文章和相关的实例开发的代码，带领读者们去亲自实践一个 **Todo-List** 的应用（能够提供记录、修改、删除等相关操作的一个记录待办事项的应用）。
 
-在这几篇文章中，我们会：
-
-* 接触相对基础的 Web 前端开发，从零开始了解简单的 **HTML** 和 **CSS** 相关的知识。
-* 还会在之后接触到 **Django** 相关的开发，学到一些和后端开发的知识，将我们的 **Todo-List** 应用挂在我们的后端程序上(您可以通过 [Django入门]() 这门微课作为前置提取了解更多基础的知识。)
-* 最后我们还会引入市面上相对流行的 **React** 框架，学到现在更为成熟的前端技术栈，将我们的 **Todo-List** 应用修改重新实现。
-
-这些文章平均每篇文章只需要 1~2 个小时的时间投入，就可以完成相应的阅读和相关实践。我们的文章内容设计强调获取所需的相关知识，并完成相关的项目，而非系统而繁复的教授冗长的全面知识，读者在完成了这些阅读和练习之后，就可以对 Web 的前后端开发初窥门径了，可以根据 **九章** 提供的其他课程和资料进行更为深入和系统的学习了。
-
-## 如何使用本微课？
-
-**九章微课** 的这种形式不只是能用来阅读，我们还提供了相应的工程文件和相应的成果实现。读者可以实现进行全文的阅读对整体的知识有一定的了解，再进行相应的章节练习，也可以在遇到练习的时候 **check** 相应的工程文件，进行联系。
-
-当遇到如下的 Git 提示的时候，我们可以使用如下命令行从这个项目中 **check** 到相应的练习的工程文件。
-
-``` shell
-git checkout "chapter-1-xxx-practice"
-```
-
-而当遇到这样的 Git 提示（名字中带 final 字样）的时候，我们可以使用如下的命令行从这个项目中 **check** 到相应的完成的工程文件进行对比和参照。
-
-``` shell
-git checkout "chapter-1-xxx-practice-final"
-```
-
-当然大家也不必完全依赖教程来逐个学习，因为文章面向初学者可能有很多知识都是读者已经掌握了的东西，那么就可以各取所需的去吸收。
-
-## 使用工具建议
-
-* IDE 建议使用 JetBrains 系列中的 PyCharm（用于后端开发）、WebStorm（用于前端开发），当然本身 JetBrains 系 IDE 的东西很多都能依赖各种插件相互使用。
-* 调试预览的浏览器建议使用最新版的 Chrome 浏览器
-
-以上只是个人的一些建议，因为毕竟很多 Web 工程师还是使用基础的文本编辑器（如：Sublime、VsCode 等），还有 （ Vim、Emacs 等 Shell 应用进行开发的，但是作为初学者使用 IDE 是较为方便的开发和实践的方式。学生用户可以申请 [学生包]() 获取全部免费的IDE，不方便的同学也可以轻松在网上找到免费的版本。
 
 ## 简单的 HTML 知识
 
@@ -43,7 +10,7 @@ HTML 的全称是 **HyperText Markup Language** ，超文本标记语言，从�
 
 我们在日常使用网站中会经常见到各种的 HTML 文本：
 
-![html-in-daily-life](chapter_1_zero_to_web/html-in-daily-life.png)
+![html-in-daily-life](chapter_1_zero_to_web_html/html-in-daily-life.png)
 
 （如图我们在 **九章** 的首页中右键使用，显示网页源代码或者是使用检查功能都能看到对应的 **HTML** 文本）
 
@@ -111,7 +78,7 @@ git checkout "chapter-one-zero-to-web-practice"
 
 我们在头结点里面插入一个 title 标签，这个就能显示在浏览器的每个标签页中的标题上。
 
-![header](chapter_1_zero_to_web/header-learn.png)
+![header](chapter_1_zero_to_web_html/header-learn.png)
 
 （如图，九章算法首页的标题和 title 标签的实现）
 
@@ -128,7 +95,7 @@ HTML标题由 `<h1>` 到 `<h6>` 六个标签构成，字体由大到小递减：
 <h6>六级标题</h6>
 ```
 
-![h-line](chapter_1_zero_to_web/h-line.png)
+![h-line](chapter_1_zero_to_web_html/h-line.png)
 
 #### 超链接
 
@@ -190,7 +157,7 @@ HTML标题由 `<h1>` 到 `<h6>` 六个标签构成，字体由大到小递减：
 <img src="/static/title.png"/>
 ```
 
-![todo-header](chapter_1_zero_to_web/todo-header.png)
+![todo-header](chapter_1_zero_to_web_html/todo-header.png)
 
 我们使用 <img> 的 **src** 属性这样就可以在列表中插入一张图片，其中 **static** 是存放图片的路径。
 
@@ -198,4 +165,3 @@ HTML标题由 `<h1>` 到 `<h6>` 六个标签构成，字体由大到小递减：
 
 仍使用 `chapter-one-zero-to-web-practice` 分支中的工程文件中的 `src/html/tagTest.html` 文件，在文件中根据注释使用以上介绍的这些标签，以上介绍的标签并不全面，根据我们的原则我们现在只需要做出来成果的刚刚好的只是就好啦。HTML 包含为数众多的标签，但是其实我们平时能用上的标签并不多，并且很多标签都是要靠我们自己修改样式。
 
-##
