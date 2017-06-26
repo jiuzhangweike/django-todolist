@@ -92,7 +92,14 @@ git checkout "chapter-one-zero-to-web-practice"
 
 （上图就是 DOM 树的简单结构，我们看到是由不同的 Element 组成的，每个 Element 还可以有自己的 Atrribute）
 
+> 拓展阅读： 关于 DOM 树的更多知识
+>
+> * [W3C HTML DOM 教程](http://www.w3school.com.cn/htmldom/)
+> * [Mozilla 上的 DOM 相关](https://developer.mozilla.org/zh-CN/docs/Glossary/DOM)
+>
+> 无论是 **W3C** 还是 **Mozilla** 都是很好的 Web 程序开发文档，但是因为本身就像是字典一样的东西，所以不建议逐个的那么学习，而是遇到什么不会的知识有针对性的去查询和学习。
 
+在对 HTML 进行分析之后我们还是延续之前的讲授思路，
 
 ## 简单的 CSS 知识
 
