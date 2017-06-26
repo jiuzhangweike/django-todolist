@@ -49,6 +49,33 @@ HTML 的全称是 **HyperText Markup Language** ，超文本标记语言，从�
 
 上图中的 HTML 看起来本身有点复杂，那是因为本身这个本身就是一个较为复杂网站，我们从开始不需要去处理那么多复杂的东西。
 
+### Hello World
+
+我们多做少说，先来引入一个最简单的 `Hello World` 的 HTML 代码：
+
+``` html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p> Hello World </p>
+</body>
+</html>
+```
+
+通过观察这段代码，我们发现 HTML 的文本格式确实比较简单，一个元素包含一组**对称的带有尖括号的标签** （并不是完全如此），另外每个标签对之间可以包含内容（如字符串什么的），还可以包含
+
+
+
+### 练习：Hello World
+
+``` shell
+git checkout "chapter-one-zero-to-web-practice"
+```
+
 
 
 
