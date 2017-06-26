@@ -128,4 +128,18 @@ div + p {
 
 ![box](chapter_2_zero_to_web_css/box-model.gif)
 
-盒模型
+HTML 文档中的每个元素都被描绘成矩形盒子，这些矩形盒子通过一个模型来描述其占用空间，这个模型称为盒模型。盒模型通过四个边界来描述：margin（外边距），border（边框），padding（内边距），content（内容区域）。这四种类型的属性整体构成我们的盒模型。
+
+那我们在计算盒模型大小的时候就不能单单的只计算我们为元素所设的大小，而是要考虑到 内边距、外边距、边框的宽高。
+
+我们举这样的一个例子，盒模型中间填充内容是一个div块，我们把这个div的样式设定为这个样子：
+
+``` css
+div {
+    width: 300px;
+    border: 25px solid green;
+    padding: 25px;
+    margin: 25px;
+}
+```
+
