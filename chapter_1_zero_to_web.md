@@ -101,7 +101,7 @@ git checkout "chapter-one-zero-to-web-practice"
 
 在对 HTML 进行分析之后我们还是延续之前的讲授思路，只想在之后我们需要使用的东西，更多的知识有 **W3C** 那样的字典网站可以方便的查询和了解。
 
-* head 头结点：
+* head 头结点标签：
 
 ``` html
 <head>
@@ -114,6 +114,32 @@ git checkout "chapter-one-zero-to-web-practice"
 ![header](chapter_1_zero_to_web/header-learn.png)
 
 （如图，九章算法首页的标题和 title 标签的实现）
+
+* h 层级标签：
+
+HTML标题由 `<h1>` 到 `<h6>` 六个标签构成，字体由大到小递减：
+
+``` html
+<h1>一级标题</h1>
+<h2>二级标题</h2>
+<h3>三级标题</h3>
+<h4>四级标题</h4>
+<h5>五级标题</h5>
+<h6>六级标题</h6>
+```
+
+![h-line](chapter_1_zero_to_web/h-line.png)
+
+* 段落和换行：
+
+
+``` html
+<!-- 换行 分成两个元素 -->
+
+```
+
+
+
 
 ## 简单的 CSS 知识
 
