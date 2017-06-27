@@ -15,7 +15,7 @@
 CSS 指的是 **Cascading Style Sheets** 即层叠样式表，我们在 **HTML5** 中开始实现了标签和样式的分离，我们使用 HTML 编写标签，而用 **CSS** 编写样式，我们可以使用 `<style>` 标签在代码中包含我们的样式代码，也可以通过这样的方式引入整个样式文件：
 
 ``` html
-<style rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 ```
 
 ### 选择器
@@ -189,4 +189,29 @@ div {
 > 加深对 CSS 的理解。
 
 ## 了解 Bootstrap
+
+我们的样式不只是可以通过自己书写的方式进行设计，毕竟每个人的审美都是不同的，不是所有的人都能设计出特别好看而统一的 UI 风格，所以我们也可以使用一些在网络中免费提供的开源的 CSS 库来帮助我们进行设计，这里我们推荐 [**Bootstrap**](http://getbootstrap.com/2.3.2/)  库作为我们使用的设计库，起初是由 Twitter 的程序员进行开发，目前开源在网络中，由全世界各地的网友进行修改和设计。
+
+### 安装 Bootstrap
+
+我们之前提到过能靠 `<style>` 加 **href** 的方式向 HTML 文件添加 CSS 样式表，这个 **href** 除了支持本地的相对、绝对路径，同时也支持网络路径，这里面我们既可以下载 CSS 文件进行修改，也可以直接引入各种 CDN 的版本。
+
+官网中提供了基础的 CSS 、主题和 JavaScript 库的文件的 CDN 的字：
+
+``` html
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+```
+
+我们这里只需要其中的 CSS 文件，当然如果我们在国内的网络环境中，可以试试使用国内的 CDN 源 [BootCDN](http://www.bootcdn.cn/bootstrap/) 进行添加：
+
+``` html
+<link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+```
 
