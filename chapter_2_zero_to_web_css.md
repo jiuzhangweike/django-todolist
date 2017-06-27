@@ -192,6 +192,8 @@ div {
 
 我们的样式不只是可以通过自己书写的方式进行设计，毕竟每个人的审美都是不同的，不是所有的人都能设计出特别好看而统一的 UI 风格，所以我们也可以使用一些在网络中免费提供的开源的 CSS 库来帮助我们进行设计，这里我们推荐 [**Bootstrap**](http://getbootstrap.com/2.3.2/)  库作为我们使用的设计库，起初是由 Twitter 的程序员进行开发，目前开源在网络中，由全世界各地的网友进行修改和设计。
 
+![bootstrap](chapter_2_zero_to_web_css/boot-strap.png)
+
 ### 安装 Bootstrap
 
 我们之前提到过能靠 `<style>` 加 **href** 的方式向 HTML 文件添加 CSS 样式表，这个 **href** 除了支持本地的相对、绝对路径，同时也支持网络路径，这里面我们既可以下载 CSS 文件进行修改，也可以直接引入各种 CDN 的版本。
@@ -214,4 +216,25 @@ div {
 ``` html
 <link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
 ```
+
+###使用 Bootstrap 
+
+Bootstrap 的使用本身也很简单，[官方文档](http://getbootstrap.com/css/)非常详细而丰富，我们只需要为我们想添加样式的元素添加对应的 `<class ID>` 就好，我们就能获得对应的样式。如果不习惯官网默认的英文文档，亦可以看国内一些翻译后的 [Bootstrap 文档](http://www.bootcss.com) 、[Bootstrap 菜鸟教程](http://www.runoob.com/bootstrap/bootstrap-tutorial.html) 。
+
+比如我们想定义一些 Bootstrap 风格的 Button 样式，我们只需要在 HTML 这么写就好了：
+
+``` html
+<a class="btn btn-default" href="#" role="button">Link</a>
+<button class="btn btn-default" type="submit">Button</button>
+<input class="btn btn-default" type="button" value="Input">
+<input class="btn btn-default" type="submit" value="Submit">
+```
+
+我们就能获得这样的样式：
+
+![button-style](chapter_2_zero_to_web_css/button-model.png)
+
+是不是很简单，我们可以引入 Bootstrap 自己做一些练习和测试，就可以进入到下一步的学习啦！
+
+
 
