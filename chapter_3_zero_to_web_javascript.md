@@ -60,7 +60,7 @@ Number 数值计算中还有一个特殊的数据对象叫做 `NaN`  指的是�
 ``` javascript
 typeof NaN;
 console.log(NaN == NaN);
-console.log(isNaN(true));
-console.log(isNaN("blue"));
 ```
+
+我们会发现：
 
