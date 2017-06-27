@@ -55,4 +55,12 @@ typeof null;
 
 * `NaN` 非数值（Not A Number）:
 
-Number 数值计算中还有一个特殊的数据对象叫做，
+Number 数值计算中还有一个特殊的数据对象叫做 `NaN`  指的是非数值，是指没办法被转型成 Number 类型的数据，但是 NaN 也有一些坑：
+
+``` javascript
+typeof NaN;
+console.log(NaN == NaN);
+console.log(isNaN(true));
+console.log(isNaN("blue"));
+```
+
