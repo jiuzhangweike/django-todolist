@@ -55,7 +55,7 @@ git checkout "chapter-one-zero-to-web-practice"
 
 我们从刚才对 HTML 的源码的分析，我们能够看出我们的 HTML 本质上实际上是一种 **树形** 结构，我们把每个标签想象成一个节点，包含标签的标签就可以被理解成是一个父节点。事实上我们对 HTML 的理解没有问题，由 HTML 的组成的树形结构被称作 **DOM树** ，而浏览器的渲染不过就是对树进行各种的遍历然后绘制到用户能够使用的界面中去，当然我们也可以实用程序来操作这些 **DOM节点** ，当然这是后话，我们在之后会降到这些操作。
 
-![dom-tree](chapter_1_zero_to_web/dom-tree.gif)
+![dom-tree](chapter_1_zero_to_web_html/dom-tree.gif)
 
 （上图就是 DOM 树的简单结构，我们看到是由不同的 Element 组成的，每个 Element 还可以有自己的 Atrribute）
 
