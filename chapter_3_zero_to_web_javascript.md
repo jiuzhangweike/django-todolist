@@ -88,7 +88,7 @@ console.log(isNaN(true));
 
 在对 JavaScript 语言中进行一定的了解之后，我们都会难免的涉及到和 **原型链** 相关的知识，并且在一些前端的面试的测试之中，和原型链相关的知识一直是其中的重点。但是，其实本身 `原型` 和 `原型链` 相关的知识都是非常简单的。首先我们知道我们的原型链最大的用来实现的用途是用来实现原型继承的 OOP。在早期的 JavaScript 语言中并没有明显的 `class` 关键字和其他 OOP 语言实现的那种定义方式，即使是在现在的现代 JavaScript 中，我们的各种打包工具也为了能正确的提高兼容性，仍然使用模拟原型链的方式去实现类定义。
 
-### All Objects！
+### Construtor！
 
 首先我们要先明确一下我们在 JavaScript 中的所有的数据类型都是 Object，万物皆为对象的观点在我们的下文中，和今后对其他的函数式语言也能应用类似的思路去处理，因为万物都是对象，所以说我们也能对原型链的方式，即通过全都是 Object 的方式来实现对象和继承，并且在 JavaScript 中函数（function）其实也是一个对象。
 
@@ -99,5 +99,43 @@ var lfkdsk1 = function() {}
 typeof(lfkdsk1)// ===> function
 ```
 
-我们可以直接使用 `function ` 的关键字把
+我们可以直接使用 `function ` 的关键字定义一个 function ，还有我们可以用一个变量来承载这个 function ，这也从侧面证明了，我们能像操纵对象一样去操纵函数（毕竟 function is object)。从另一个角度来说，我们也可以试试用 `new` 关键字定义的 function：
 
+``` javascript
+var lfkdsk = new Function("");
+lfkdsk();
+```
+
+这样看起来就像是 Java 、Cpp 等一系列传统 oop 语言的特性，那么这个 Function 又是一个什么东西呢？我们可以来看一下：
+
+``` javascript
+typeof(Function);
+// ===> "function"
+```
+
+从这个反馈上来看，Function、Object、Number 这样的内置类型，实际上更像是创建对应类型的一种构造函数（Construtor），我们通过这种构造函数，就能创建出对应的对象。
+
+###  prototype & [[Prototype]]
+
+![object-line](chapter_3_zero_to_web_javascript/object-line.png)
+
+其实理解动态语言中的继承链并不是什么复杂的问题，相反其实感觉还是个挺简单的问题，所谓的继承链就像上图一样，也不过是把类型信息形成一个链表，每个类都能索引到自己的父类的类信息对象。这只是和继承链相关的知识，在动态语言中各类的 VM 保存了丰富的 `元信息` ，并且我们可以动态的操作我们的这个继承链来实现很多静态语言不容易搞得操作。
+
+> Every JavaScript object has a second JavaScript object (or null ,
+> but this is rare) associated with it. This second object is known as a prototype, and the first object inherits properties from the prototype.
+
+首先我们来引用一下 ES 官方文档中的说法，ES 官方文档中说，每个JS对象一定对应一个原型对象（"_proto_"），并从原型对象继承属性和方法，也就是说我们的每个 object 都是通过自己的 prototype 来实现的继承属性方法。
+
+``` javascript
+var lfkdsk = {lfkdsk: "lfkdsk"};
+var lfk = new Object();
+lfkdsk.__proto__ === Object.prototype
+lfk.__proto__ === Object.prototype
+lfk.toString === lfk.__proto__.toString
+```
+
+我们先用这个测试来简单的测试一下我们对原型对象的验证：
+
+![object-lfkdsk](chapter_3_zero_to_web_javascript/lfkdsk-object.png)
+
+我们会发现无论是对象 `lfkdsk` 还是 `lfk` 本身都是，由 Object 类型，因此他们的原型都指向同一个对象 `Object.prototype` ，并且我们发现 `lfk` 的 `toString` 函数和 `lfk.__proto__` 对象的 toString 方法都是同一个方法，
