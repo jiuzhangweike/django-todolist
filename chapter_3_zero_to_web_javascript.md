@@ -124,7 +124,7 @@ typeof(Function);
 > Every JavaScript object has a second JavaScript object (or null ,
 > but this is rare) associated with it. This second object is known as a prototype, and the first object inherits properties from the prototype.
 
-首先我们来引用一下 ES 官方文档中的说法，ES 官方文档中说，每个JS对象一定对应一个原型对象（"_proto_"），并从原型对象继承属性和方法，也就是说我们的每个 object 都是通过自己的 prototype 来实现的继承属性方法。
+首先我们来引用一下 ES 官方文档中的说法，ES 官方文档中说，每个JS对象一定对应一个原型对象，并从原型对象继承属性和方法，也就是说我们的每个 object 都是通过自己的 prototype 来实现的继承属性方法。
 
 ``` javascript
 var lfkdsk = {lfkdsk: "lfkdsk"};
@@ -142,3 +142,6 @@ lfk.toString === lfk.__proto__.toString
 
 那么我们代码中出现的 `Object.prototype` 对象到底是什么东西？为什么它会等于我们所创建对象的原型呢？
 
+`prototype` 是一个属性，这个属性本身只会出现在构造函数上，就像我们刚才说，`Object` 是一个生成 object 的构造函数。当你创建函数时，JS会为这个函数自动添加`prototype`属性，值是空对象。而一旦你把这个函数当作构造函数（`constructor`）调用（即通过`new`关键字调用），那么JS就会帮你创建该构造函数的实例，实例继承构造函数`prototype`的所有属性和方法（实例通过设置自己的`__proto__`指向承构造函数的`prototype`来实现这种继承）。
+
+因此，我们就可以对这种情况进行总结了，`prototype` 本身是构造函数所有的东西，
