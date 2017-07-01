@@ -140,3 +140,4 @@ lfk.toString === lfk.__proto__.toString
 
 我们会发现无论是对象 `lfkdsk` 还是 `lfk` 本身都是，由 Object 类型，因此他们的原型都指向同一个对象 `Object.prototype` ，并且我们发现 `lfk` 的 `toString` 函数和 `lfk.__proto__` 对象的 toString 方法都是同一个方法，从这里我们能看出我们确实依赖原型对象实现了传递对象和函数。
 
+那么我们代码中出现的 `Object.prototype` 对象到底是什么东西？
