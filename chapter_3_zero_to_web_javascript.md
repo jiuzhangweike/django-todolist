@@ -90,4 +90,14 @@ console.log(isNaN(true));
 
 ### All Objects！
 
-首先我们要先明确一下我们在 JavaScript 中的所有的数据类型都是 Object，万物皆为对象的观点在我们的下文中，和今后对其他的函数式语言也能应用类似的思路去处理，因为万物都是对象，所以说我们也能对原型链的方式
+首先我们要先明确一下我们在 JavaScript 中的所有的数据类型都是 Object，万物皆为对象的观点在我们的下文中，和今后对其他的函数式语言也能应用类似的思路去处理，因为万物都是对象，所以说我们也能对原型链的方式，即通过全都是 Object 的方式来实现对象和继承，并且在 JavaScript 中函数（function）其实也是一个对象。
+
+``` javascript
+function lfkdsk() {}
+typeof(lfkdsk) // ===> function
+var lfkdsk1 = function() {}
+typeof(lfkdsk1)// ===> function
+```
+
+我们可以直接使用 `function ` 的关键字把
+
