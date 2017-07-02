@@ -12,11 +12,55 @@ JavaScript 作为一门语言我们有了了解，但是 JavaScript 目前主要
 * `navigator` 对象：navigator 对象中能拿到很多浏览器的详细信息，比如经常用的  **navigator.userAgent** 获取浏览器设置的 UA 信息。
 * `document` 对象：document 是代表了当前网页的文档模型，比如 `document.title` 就表示了我们当前的网页的 title 文本，这就是我们要操纵的 DOM 对象。
 
-### 操纵 DOM 树
+### 了解 DOM 树
 
 在我们之前的文章中提到过 DOM 对象是一个树形的数据结构（联想我们讲解过的 HTML 的结构），那我们操纵 DOM 树的时候我们的操作也会紧密围绕这个树形结构去展开，比如最简单的我们可以通过一些 document 提供的 API 去从文本模型中获取出对应的节点，比如我们可以使用 `getElementById()` 和 `getElementsByTagName()` 这两个 API，第一个 API 可以获取对应的 ID 的元素，而第二个 API 可以获取到所有 Tag 为对应项目的元素集合。
 
 ``` html
+<!DOCTYPE html>
+<html>
+<body>
 
+<p id="lfkdsk">lfkdsk!</p>
+<p>演示 <b>getElementById</b> 方法！</p>
+
+<script>
+lfkdsk = document.getElementById("lfkdsk");
+document.write("<p>我们通过 getElementById 获取到：" + lfkdsk.innerHTML + "</p>");
+</script>
+
+</body>
+</html>
 ```
+
+比如我们可以通过在代码中获取 id 为 `lfkdsk` 的 element ，然后在网页中写入一个我们获取到的文本，运行这段代码我们就会看到如下的样式：
+
+![element-id](chapter_4_zero_to_web_dom/id-element.png)
+
+我们接着来试试 `getElementsByTagName`：
+
+``` html
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>lfkdsk!</p>
+<p>演示 <b>getElementsByTagName</b> 方法！</p>
+
+<script>
+lfkdsk = document.getElementsByTagName("p");
+document.write("<p>我们通过 getElementById 获取到：" + lfkdsk[0].innerHTML + "</p>");
+</script>
+
+</body>
+</html>
+```
+
+我们找到了所有的 p 元素，并且去除第一个元素，添加在了当前的网页之中：
+
+![p-document](chapter_4_zero_to_web_dom/tag-name.png)
+
+另外我们也可以通过 `getElementsByClassName` 获取想同类的元素，大家可以自行尝试。
+
+### 操纵 DOM 树
 
