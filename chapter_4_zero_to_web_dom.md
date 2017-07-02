@@ -4,4 +4,10 @@
 
 ### 浏览器对象
 
-JavaScript 作为一门语言我们有了了解，但是 JavaScript 目前主要的作用还是作为一门浏览器语言被使用，那么浏览器作为语言的外围环境，将我们能从浏览器中获取一些浏览器对象，然后我们就可以
+JavaScript 作为一门语言我们有了了解，但是 JavaScript 目前主要的作用还是作为一门浏览器语言被使用，那么浏览器作为语言的外围环境，将我们能从浏览器中获取一些浏览器对象，然后我们就可以借助访问这些浏览器对象，获取当前浏览器很多的信息，这里我们可以简单的介绍一下：
+
+* `window` 对象：window 表示了浏览器的外围窗口，我们能从 window 对象中，获得 `innerWidth` 和 `innerHeight` 获取浏览器的宽高。
+* `screen` 对象：screen 对象表示了屏幕的大小，我们能拿到 `width` 和 `height` 来拿到屏幕的大小。
+* `location` 对象：location 对象经常用在获取和处理当前 url 的场景中，我们能从 location 中获取很多和 url 的具体信息，例如 `host` 、`port` 等很多的信息。
+* `navigator` 对象：navigator 对象中能拿到很多浏览器的详细信息，比如经常用的  **navigator.userAgent** 获取浏览器设置的 UA 信息。
+* `document` 对象：
