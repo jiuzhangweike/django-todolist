@@ -11,3 +11,12 @@ JavaScript 作为一门语言我们有了了解，但是 JavaScript 目前主要
 * `location` 对象：location 对象经常用在获取和处理当前 url 的场景中，我们能从 location 中获取很多和 url 的具体信息，例如 `host` 、`port` 等很多的信息。
 * `navigator` 对象：navigator 对象中能拿到很多浏览器的详细信息，比如经常用的  **navigator.userAgent** 获取浏览器设置的 UA 信息。
 * `document` 对象：document 是代表了当前网页的文档模型，比如 `document.title` 就表示了我们当前的网页的 title 文本，这就是我们要操纵的 DOM 对象。
+
+### 操纵 DOM 树
+
+在我们之前的文章中提到过 DOM 对象是一个树形的数据结构（联想我们讲解过的 HTML 的结构），那我们操纵 DOM 树的时候我们的操作也会紧密围绕这个树形结构去展开，比如最简单的我们可以通过一些 document 提供的 API 去从文本模型中获取出对应的节点，比如我们可以使用 `getElementById()` 和 `getElementsByTagName()` 这两个 API，第一个 API 可以获取对应的 ID 的元素，而第二个 API 可以获取到所有 Tag 为对应项目的元素集合。
+
+``` html
+
+```
+
