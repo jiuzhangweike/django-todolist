@@ -10,4 +10,4 @@ JavaScript 作为一门语言我们有了了解，但是 JavaScript 目前主要
 * `screen` 对象：screen 对象表示了屏幕的大小，我们能拿到 `width` 和 `height` 来拿到屏幕的大小。
 * `location` 对象：location 对象经常用在获取和处理当前 url 的场景中，我们能从 location 中获取很多和 url 的具体信息，例如 `host` 、`port` 等很多的信息。
 * `navigator` 对象：navigator 对象中能拿到很多浏览器的详细信息，比如经常用的  **navigator.userAgent** 获取浏览器设置的 UA 信息。
-* `document` 对象：
+* `document` 对象：document 是代表了当前网页的文档模型，比如 `document.title` 就表示了我们当前的网页的 title 文本，这就是我们要操纵的 DOM 对象。
