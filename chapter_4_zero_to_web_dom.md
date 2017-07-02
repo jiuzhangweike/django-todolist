@@ -64,3 +64,136 @@ document.write("<p>我们通过 getElementById 获取到：" + lfkdsk[0].innerHT
 
 ### 操纵 DOM 树
 
+一般操纵 DOM 树的操作，基本上就是添加节点、删除节点、修改节点等方面的操作。
+
+#### 添加节点
+
+``` html
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="div1">
+<p id="p1">This is a paragraph.</p>
+<p id="p2">This is another paragraph.</p>
+</div>
+
+<script>
+var para = document.createElement("p");
+var node = document.createTextNode("This is new.");
+para.appendChild(node);
+
+var element = document.getElementById("div1");
+element.appendChild(para);
+</script>
+
+</body>
+</html>
+```
+
+我们来看这段代码的实现，我们创建了一个 p 元素，在其中添加了一个文本对象 node ，之后又被添加进了 ID 为 div1所在的节点，`appendChild` 这个 API 本身就说明了我们可以通过这个 API 添加节点：
+
+![add-node](chapter_4_zero_to_web_dom/add-note.png)
+
+除此我们也可以依赖 `insertBefore` 插入节点到某个具体的节点之前。
+
+#### 删除节点
+
+``` html
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="div1">
+<p id="p1">This is a paragraph.</p>
+<p id="p2">This is another paragraph.</p>
+</div>
+
+<script>
+var element=document.getElementById("div1");
+var p1 = document.getElementById("p1");
+element.removeChild(p1);
+</script>
+
+</body>
+</html>
+```
+
+我们在这段中，使用了 `removeChild` API 能从一个父节点中删除出固定的节点，运行后的样式如图：
+
+![remove-node](chapter_4_zero_to_web_dom/remove-node.png)
+
+我们删除了第一个ID为 p1 的 P 节点。
+
+#### 修改节点
+
+最简单的修改节点的方法当然是直接对 `.innerHTML` 属性进行修改就可以：
+
+``` html
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="p1">text!</p>
+
+<script>
+document.getElementById("p1").innerHTML="<strong>New text!</strong>";
+</script>
+
+</body>
+</html>
+```
+
+我们获取文本中的 p1 元素，修改 innerHTML 节点为加粗的文本：
+
+![change-node](chapter_4_zero_to_web_dom/change-node.png)
+
+这时我们文本中的文本就已经被替换成了加粗的新文本。
+
+另外我们还可以通过 `.innerText` 和 `.textContent` 过滤其中的 HTML 标签，这时候就不会对 HTML 标签进行转义：
+
+``` html
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="p1">text!</p>
+
+<script>
+document.getElementById("p1").innerText="<strong>New text!</strong>";
+</script>
+
+</body>
+</html>
+```
+
+这时候我们的加粗标签就没什么用来，获取的结果就如同图中所示：
+
+
+
+![change-with-text](chapter_4_zero_to_web_dom/change-with-text.png)
+
+当然我们也能修改节点的样式：
+
+``` html
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="p1">lfkdsk!</p>
+<p id="p2">lfkdsk!</p>
+
+<script>
+document.getElementById("p2").style.color="blue";
+</script>
+
+</body>
+</html>
+```
+
+我们的 style 也能在获取的节点中，获取的到，我们试着修改了其中的 `.color` 颜色属性。
+
+运行之后的结果为：
+
+![change-color](chapter_4_zero_to_web_dom/change-color.png)
+
