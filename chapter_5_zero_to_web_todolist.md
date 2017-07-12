@@ -102,4 +102,32 @@ INSTALLED_APPS = [
 $ python manager.py makemigrations
 ```
 
-使用这条命令我们可以创建
+使用这条命令我们可以对我们的 `model` 进行操作，无论是添加一个 Field 或者是删除一个 Model 都可以通过这条命令来修改，运行完这个命令之后我们应该会看到这样的结果输出：
+
+![makemigrations](chapter_5_zero_to_web_todolist/makemigrations.png)
+
+在生成修改之后我们可以通过：
+
+``` shell
+$ python manager.py migrate
+```
+
+我们通过这条命令就能把我们刚才产生的修改应用到我们的数据库中，我们在运行这句话之后应该能看到对应的产生：
+
+![migrate](chapter_5_zero_to_web_todolist/migrate.png)
+
+我们将我们定义的数据库类，生成出对应的 SQL 并且应用，我们就会获得我们产生的数据库 `db.sqlite3` 文件。
+
+### Model 中的属性 Field
+
+在刚刚的数据类中，我们遇到了很多的子属性，代表了其中的多种的数据类：
+
+``` python
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    completed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+```
+
+我们使用 `models` 中提供的各种
