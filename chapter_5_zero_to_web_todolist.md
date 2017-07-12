@@ -2,6 +2,39 @@
 
 太好了，我们终于走到了这一步，不知道我们有多少同学成功的坚持下来了。前面我们分别的学习了 **Django入门开发** 的相关的知识，和 **Web前端开发** 相关的 HTML、CSS以及一些 JavaScript 相关的知识，这些知识虽然看起来较为繁杂，但是在我们一步步的不断地学习之后，大家都对这些部分的知识和内容有了一定的了解，接下来我们终于要开始设计和实现我们所想要制作的 `Todo-List` 程序了。
 
+``` 
+├── db.sqlite3
+├── manage.py
+├── requirements.txt
+├── static
+│   ├── css
+│   │   ├── bootstrap-theme.css
+│   │   ├── bootstrap.css
+│   ├── fonts
+│   │   ├── glyphicons-halflings-regular.eot
+│   │   ├── glyphicons-halflings-regular.svg
+│   │   ├── glyphicons-halflings-regular.ttf
+│   │   ├── glyphicons-halflings-regular.woff
+│   │   └── glyphicons-halflings-regular.woff2
+│   └── js
+│       ├── bootstrap.js
+│       ├── bootstrap.min.js
+│       ├── jquery-3.2.1.min.js
+│       └── npm.js
+├── templates
+│   ├── base.html
+│   └── index.html
+└── todolist
+    ├── __init__.py
+    ├── admin.py
+    ├── migrations
+    ├── models.py
+    ├── settings.py
+    ├── urls.py
+    ├── views.py
+    ├── wsgi.py
+```
+
 
 
 ## 了解数据库
@@ -30,9 +63,43 @@
 
 我们的数据库其实就是这样的一个大的表格，其中的每一个 Item 就是表格的一行，每一列都是一种属性，从这样的一种角度去解释，数据库的存储实现看起来更像是一个 Excel 软件一样的东西，有一个大大的表格，横行表示一条数据，纵行表示其中的一种属性。这样我们对数据库存储的理解就更为清楚了。总而言之，从上层的应用来看，我们的数据库也不过是用起来像 Excel 表格，存起来像文件一样的东西罢了。
 
-我们在开发实际的程序之前我们应该简单的设计一下我们的程序，首先是数据设计，我们只是为了实现一个简单的能够存储 每个 Todo-Item 数据而已，因而我们所需要的数据也不过是几种数据：
+我们总算是对数据库系统的原理有了我们自己的见解，这种了解和见解，目前看起来可能比较简单，但是会对我们的使用和理解有很大的帮助。我们在开发实际的程序之前我们应该简单的设计一下我们的程序，首先是数据设计，我们只是为了实现一个简单的能够存储 每个 Todo-Item 数据而已，因而我们所需要的数据也不过是几种数据：
 
-* 我们需要每个 Item 的 Title 作为每个 Todo-Item 的标题，我们还应该需要一个 description 值来对我们的每个 Item 进行更为详细的描述。
-* 另外我们的每一个 Item 还需要用一个 Flag 来记录我们当前条目的状态，就是说我们的这条 todo 是不是已经完成了，通过区分这个我们可以提供一些视觉上的区分方法，来区分我们的 todo 是否完成（比如说给已经完成的条目添加删除线）。
-* 紧接着我们应该提供一个 createAt 时间戳来记录我们的本条 todo 的创建时间，还有我们还需要一个 updateAt 的时间戳来记录我们
+- 我们需要每个 Item 的 Title 作为每个 Todo-Item 的标题，我们还应该需要一个 description 值来对我们的每个 Item 进行更为详细的描述。
+- 另外我们的每一个 Item 还需要用一个 Flag 来记录我们当前条目的状态，就是说我们的这条 todo 是不是已经完成了，通过区分这个我们可以提供一些视觉上的区分方法，来区分我们的 todo 是否完成（比如说给已经完成的条目添加删除线）。
+- 紧接着我们应该提供一个 createAt 时间戳来记录我们的本条 todo 的创建时间，还有我们还需要一个 updateAt 的时间戳来记录我们更新的时间。
 
+由此我们应该在应用 `todolist` 的 `model.py` 文件中写下如下的代码：
+
+``` python
+from django.db import models
+
+class Todo(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    completed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+```
+
+引入了 django.db 的 models ，并且让我们所要实现的数据库集成这个类，并且将我们刚才已经讨论出来的结果的属性存储，作为我们类的属性，这样子我们就能定义一个包含这些属性的类。
+
+### 使用 models
+
+我们虽然能够定义了这样的一个数据类去控制我们和这个模板所对应的一个数据类，但是只是这样我们还不能使用这个数据库，还要告诉我们的程序能找到这个数据库，并且为整个程序提供这个数据库，我们就要在 `setting.py` 文件中安装包含有 `models.py` 文件的应用：
+
+``` python
+INSTALLED_APPS = [
+    #...
+    'todolist',
+    #...
+]
+```
+
+然后我们在根目录运行两条命令就可以生成出我们所需要的数据库：
+
+``` shell
+$ python manager.py makemigrations
+```
+
+使用这条命令我们可以创建
