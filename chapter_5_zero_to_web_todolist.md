@@ -135,4 +135,5 @@ $ python manager.py migrate
 * `max_length` : CharField 和其子类都需要设定一个最大的长度。
 * `blank` : 允许数据为空白，默认是 False
 * `default` ：default 值设置了当前属性的默认值，比如这里我们把 `completed` 的值设置为默认是未完成的 False
-* `auto_now` ：取当前的时间戳，当当前对象被 saved 的时候
+* `auto_now` ：取当前的时间戳，当当前对象被 saved 的时候，使用最后一次修改的时间戳作为这个 DataTimeField 的值。
+* ``
