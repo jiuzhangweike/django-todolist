@@ -130,4 +130,9 @@ $ python manager.py migrate
     updated_at = models.DateTimeField(auto_now=True)
 ```
 
-我们使用 `models` 中提供的各种
+我们使用 `models` 中提供的各种数据类型的方法创建了不同的属性，另外我们在每个函数中传入了一些 **Field** 中的一些约束，比如说我们在上面的代码中用到的那些：
+
+* `max_length` : CharField 和其子类都需要设定一个最大的长度。
+* `blank` : 允许数据为空白，默认是 False
+* `default` ：default 值设置了当前属性的默认值，比如这里我们把 `completed` 的值设置为默认是未完成的 False
+* `auto_now` ：取当前的时间戳，当当前对象被 saved 的时候
