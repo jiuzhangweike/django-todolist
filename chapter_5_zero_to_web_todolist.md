@@ -136,4 +136,37 @@ $ python manager.py migrate
 * `blank` : 允许数据为空白，默认是 False
 * `default` ：default 值设置了当前属性的默认值，比如这里我们把 `completed` 的值设置为默认是未完成的 False
 * `auto_now` ：取当前的时间戳，当当前对象被 saved 的时候，使用最后一次修改的时间戳作为这个 DataTimeField 的值。
-* ``
+* `auto_now_add` : 只取出我们的 Model 第一次创建时当时的时间戳，作为 DataTimeField 的值。
+
+另外我们创建的每个 Model 都会有默认的一个 **id** 属性作为一个自增主键：
+
+``` python
+id = models.AutoField(primary_key=True)
+```
+
+我们如果不想设置其他的主键来区分 Model ，我们就可以只默认的使用这个 id 作为区分。
+
+### 元数据选项
+
+``` python
+from django.db import models
+
+class Todo(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    completed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('completed', '-updated_at',)
+```
+
+我们可以通过 inner class 的方式为我们的 Model 类提供非数据类的额外的数据，Meta Option 给我们提供了多种的属性去控制我们的数据类。
+
+比如我们在这里面使用了 ordering 这个 Meta 属性，这个属性控制了我们获取全部的数据的顺序，ordering 本身接受的是一个元组，里面的每一项都是 Model 的一个 Field，拿到的全部的数据，按照元组中的顺序对我们的数据进行排序。但是这里面出现了一个属性写着 `-updated_at` 的字样比我们的属性多了一个减号，这个的意思是按照降序的方式对数据进行排序。
+
+因此我们上面实际上在做的就是先把所有的数据先按照是否完成来开始排序，然后再按照我们最后的更新时间来继续更新。
+
+
+
