@@ -170,3 +170,36 @@ class Todo(models.Model):
 
 
 
+## Urls 的设置
+
+``` python
+from django.conf.urls import url
+from django.contrib import admin
+from todolist import views
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^$', views.todolist),
+    url(r'^delete/(?P<pk>\d+)/', views.delete),
+    url(r'^complete/(?P<pk>\d+)/', views.complete),
+]
+```
+
+我们在之前也介绍过我们使用 Urls 部分的程序设计，我们使用正则表达式去对 `urls` 进行捕获。从我们上面的代码来看，我们支持了这样几个 Action / 路由：
+
+* 默认的 admin 管理界面
+* 打开 todolist 的主界面
+* 删除一个具体  todo-item 的路由
+* 设置某一个具体 todo-item 为完成的路由
+
+这里读者可能会感到比较的意外，为什么我们有完成、有删除但是没有针对 todo-item 的添加呢？
+
+其实是因为我们的这个 Todo-List 的 Demo 中，仅是为了介绍和 Django 的项目，我们尽量减少前端的相关的介绍和操作（或者说是逐步的添加进去），所以说我们这里只用 Django 自带的最传统的方式，完全通过传递表单和刷新页面的方式对 Todo-List 进行刷新和更新。因此我们这里 todo-item 添加的逻辑就被放到整个主页面的逻辑之中去了。
+
+
+
+### 简单的模板语法学习
+
+我们在第一课的时候，简单的获取了一个时间戳就直接通过 `HttpResponse` 返回了简单的字符串，但是我们平时使用的网页可不仅仅只能使用这种简单的字符串组成的网页，我们的网页都有各种丰富功能，提供了各种动态的元素和界面。这时候除了使用一些 JavaScript 的手段（我们打算着眼在 Django的技术上面 ），那么我们就应该简单的学习一些和模板相关的技术。
+
+`模板（template）`  是一种 Django 中提供的一种编写界面的方式，因为我们需要提供网页的动态性，因而我们就需要一种方式能生成动态的
