@@ -198,8 +198,82 @@ urlpatterns = [
 
 
 
-### 简单的模板语法学习
+# 简单的模板语法学习
 
 我们在第一课的时候，简单的获取了一个时间戳就直接通过 `HttpResponse` 返回了简单的字符串，但是我们平时使用的网页可不仅仅只能使用这种简单的字符串组成的网页，我们的网页都有各种丰富功能，提供了各种动态的元素和界面。这时候除了使用一些 JavaScript 的手段（我们打算着眼在 Django的技术上面 ），那么我们就应该简单的学习一些和模板相关的技术。
 
-`模板（template）`  是一种 Django 中提供的一种编写界面的方式，因为我们需要提供网页的动态性，因而我们就需要一种方式能生成动态的
+`模板（template）`  是一种 Django 中提供的一种编写界面的方式，因为我们需要提供网页的动态性，就需要一种方式能生成动态的 HTML 的方式。因此 Django 中的模板就是一种提供在 HTML 中的一种 DSL 语言，提供了一些动态化的语法能动态的控制我们渲染的 HTML 的样式和界面，由后端渲染上界面上去，然后再展示在用户的眼前。
+
+感觉对模板的描述较为抽象的同学可以通过这样的一种思路去理解模板引擎做了一个什么样的事情，读过本教程的同学们应该都有使用过 C、Cpp 这样的 C-Style 的语言，那对其中经常使用的预处理器也不会陌生，预处理器的原理解释起来就是将我们写在 `#define` 中的函数体或是变量进行语法树层次的等价替换，直接填写在源码里。那我们的模板引擎其实也是做了这样的一个事情，接受我们动态接到的数据，生成出对应的 HTML 代码，生成出整张页面发送给用户。
+
+![template](chapter_5_zero_to_web_todolist/template.png)
+
+## 配置 Template 路径
+
+我们首先要使用的时候我们需要在 `settings.py` 文件中对我们使用的模板引擎进行配置：
+
+``` python
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+```
+
+这里面我们需要关注的地方不太多，我们选择几个简单的子段进行解释：
+
+* `BACKEND` ：我们在 BACKEND 后端这个字段配置了我们为了模板使用的模板引擎，这里我们使用默认的配置就行了。
+* `DIRS`：我们在 DIRS 中配置的是我们模板引擎中处理的模板文件的具体的位置，这里我们设置为根目录下的 `templates` 文件夹。
+* `APP_DIRS` : 配置的是模板引擎是否对 APP 内的模板进行处理。
+
+## 模板语法
+
+我们可以通过模板语言中，动态的向我们的网页中插入多种格式化的数据（HTML, XML, CSV等等），在模板中我们可以包含变量，在对我们的模板进行 **求值** 和 **生成界面** 的时候将变量动态的替换进去，另外模板语法还支持使用各种流程控制的 **Tag** 能让我们控制模板生成的流程，我们说了这么多可以简单的来看一下模板的语法具体张成什么样子：
+
+``` django
+{% extends "base_generic.html" %}
+
+{% block title %}{{ section.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ section.title }}</h1>
+
+{% for story in story_list %}
+<h2>
+  <a href="{{ story.get_absolute_url }}">
+    {{ story.headline|upper }}
+  </a>
+</h2>
+<p>{{ story.tease|truncatewords:"100" }}</p>
+{% endfor %}
+{% endblock %}
+```
+
+### 使用变量（Variables）
+
+在 Django template 文件中使用变量的方式是这个样子的：
+
+``` django
+{{ variables }}
+```
+
+左右两侧使用两层大括号包围我们的变量名，在对 template 进行生成 HTML 文件的时候，变量名会被动态的替换为我们传入的值，我们在使用这个变量名的时候的规则和 python 的规则相同，我们还可以使用类似这样的方式：
+
+``` django
+{{ variable.attr }}
+```
+
+去访问我们传入变量的属性。
+
+### 使用过滤器（Filter）
+
