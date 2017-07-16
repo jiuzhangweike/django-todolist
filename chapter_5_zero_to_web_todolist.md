@@ -287,3 +287,51 @@ TEMPLATES = [
 
 ### 使用标签（Tags）
 
+我们除了使用简单的变量来改变网页中确定的内容，以便于能进行对我们的 Web 页面进行一些动态的生成和修改之外我们还能使用形如 `{% Tags %}` 的方式来使用一些 Django Language 标签来进行一些更为高阶的操作。我们可以使用成对的标签开控制我们的逻辑流程。
+
+#### for 循环
+
+我们可以使用 **for** 标签对我们的列表进行一个遍历和迭代：
+
+``` django
+<ul>
+{% for athlete in athlete_list %}
+    <li>{{ athlete.name }}</li>
+{% endfor %}
+</ul>
+```
+
+比如说我们可以通过这样的语法对我们的 `athlete_list` （作者列表）进行迭代，在 HTML 中生成一个列表。
+
+#### if、elif、else 流程控制
+
+我们可以使用经常在编程语言中的能够使用的 `if elif else` 的这种组合来空着我们的逻辑流程：
+
+``` django
+{% if athlete_list %}
+    Number of athletes: {{ athlete_list|length }}
+{% elif athlete_in_locker_room_list %}
+    Athletes should be out of the locker room soon!
+{% else %}
+    No athletes.
+{% endif %}
+```
+
+如果我们的 `athlete_list` 存在非空，我们打印 `athlete_list` 的长度，否则如果 `athlete_in_locker_room_list` 存在则在 HTML 中插入 **Athletes should be out of the locker room soon! ** 如果这两个分支都没有的话，我们就在 HTML 中插入 **No athletes.** 另外我们要记得我们在 Django Language 中使用的标签都要有开始有封闭，所以我们最后要在结尾跟上 `{% endif %}` 。
+
+#### comments 注释
+
+``` django
+{# comments #}
+```
+
+Django Template Language 作为一门模板语言，我们也得能在模板中使用 `注释` 的功能，我们只要在一层大括号中跟着 `#` ，就可以使用注释功能。
+
+#### 模板继承
+
+我们接着能接触到了 `Django Template Language ` 语言中最复杂的部分——模板继承的功能，我们能够在模板中定义一个定义一个基础的骨架，然后我们可以在我们的 `骨架` 中定义留出我们定义的 **block** 的位置，然后我们可以通过一个继承这个骨架的模板文件，对我们留空的 **block** 进行出具体的实现，那我们的 block 的具体实现的内容在渲染的时候就会被填充在我们的 `骨架` 模板之中，比如说我们举出我们这个 todo-list 的具体的实现部分的一个文件 `base.html` :
+
+``` django
+
+```
+
